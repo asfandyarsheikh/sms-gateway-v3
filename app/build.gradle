@@ -1,0 +1,86 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.replyqa.smsgateway"
+        minSdkVersion 21
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0.0"
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            // Checks for env vars (CI) or falls back to local file
+            storeFile file(System.getenv("KEYSTORE_PATH") ?: "release.keystore")
+            storePassword System.getenv("KEYSTORE_PASSWORD")
+            keyAlias System.getenv("KEY_ALIAS")
+            keyPassword System.getenv("KEY_PASSWORD")
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable true
+        }
+       release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    packagingOptions {
+        pickFirst "androidsupportmultidexversion.txt"
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    namespace 'com.replyqa.smsgateway'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'com.jakewharton:process-phoenix:3.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    // Upgrade to OneSignal 5.x - latest version with better API
+    implementation 'com.onesignal:OneSignal:[5.0.0, 5.99.99]'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'com.github.yuriy-budiyev:code-scanner:2.3.2'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.6'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.6'
+    implementation 'com.github.codekidX:storage-chooser:2.0.4.4'
+    // Add kotlinx-coroutines for OneSignal async operations
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
