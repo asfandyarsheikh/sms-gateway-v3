@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Sms Gateway</string>
+    <string name="splash_screen_image">Splash Screen Image</string>
+    <string name="onesignal_app_id">Onesignal App Id</string>
+    <string name="rest_api">REST API for Incoming SMS</string>
+    <string name="country_code">Country Filter</string>
+    <string name="save_preferences">Save Preferences</string>
+    <string name="json_for_outgoing_sms"><b><u>Example of JSON posted to REST API</u></b></string>
+    <string name="authorization_header">Authorization Header</string>
+    <string name="default_api">https://d44d085f-97ee-43a2-bd87-3c2b99f09367.free.beeceptor.com/sms</string>
+    <string name="default_onesignal">4c010246-8996-464a-9121-36cd615dfb97</string>
+    <string name="default_country">+92</string>
+    <string name="default_auth">Bearer fpdkf7nUd0EHe03qCpnLcqyfrG4zGBUULB6eGgBhlMO5q</string>
+    <string name="donations"><b><u>If this helped you, here\'s my bitcoin address</u></b></string>
+    <string name="bitcoin">1JXNm7wMv5F32tjwMSHteQV4eR7tAVqJWX</string>
+    <string name="title_activity_camera">Camera</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>
